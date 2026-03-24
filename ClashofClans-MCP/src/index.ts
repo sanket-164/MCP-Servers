@@ -15,6 +15,21 @@ dotenv.config({
 const BASE_URL = process.env.COC_API_URL;
 const API_TOKEN = process.env.COC_API_TOKEN;
 
+if (!API_TOKEN) {
+    console.error(
+        "ERROR: COC_API_TOKEN environment variable is not set."
+    );
+    process.exit(1);
+}
+
+if (!BASE_URL) {
+    console.error(
+        "ERROR: COC_API_URL environment variable is not set."
+    );
+    process.exit(1);
+}
+
+
 // HTTP Helper
 
 async function cocFetch(
