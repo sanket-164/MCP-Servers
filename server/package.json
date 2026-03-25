@@ -1,18 +1,21 @@
 {
-  "name": "mcp",
+  "name": "mcp-servers",
   "version": "1.0.0",
-  "description": "",
+  "description": "MCP servers for various applications including Leetcode, MealDB, Clash of Clans, and Brawl Stars.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Sanket Sadadiya",
   "license": "ISC",
   "type": "module",
   "bin": {
     "server": "./dist/index.js"
+  },
+  "repository": {
+    "url": "https://github.com/sanket-164/MCP-Servers"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",

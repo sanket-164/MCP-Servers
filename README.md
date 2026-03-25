@@ -21,65 +21,7 @@
 
 ## Setup
 
-### Setup Locally
-
-1. Open Claude Desktop.
-
-![Open Claude Desktop](server/media/Open-Claude-Desktop.png)
-
-2. Go to **Settings**.
-
-![Go to Settings](server/media/Go-to-Settings.png)
-
-3. Go to **Developer Mode** and click **Edit Config**.
-
-![Open Claude Config](server/media/Open-Claude-Config.png)
-
-4. Edit the config by adding static paths to mcp servers file and save it.
-
-```bash
-{
-  ...
-  ,
-  "mcpServers": {
-    "mealdb-mcp": {
-      "command": "node",
-      "args": [
-        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\mealdb\\stdio.js"
-      ]
-    },
-    "leetcode-mcp": {
-      "command": "node",
-      "args": [
-        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\leetcode\\stdio.js"
-      ]
-    },
-    "clashofclans-mcp": {
-      "command": "node",
-      "args": [
-        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\clash-of-clans\\stdio.js"
-      ]
-    },
-    "brawlstars-mcp": {
-      "command": "node",
-      "args": [
-        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\brawlstars\\stdio.js"
-      ]
-    }
-  }
-}
-
-```
-
-5. Reopen Claude Desktop and go to **Developer Mode**.
-
-![View MCP Servers](server/media/View-MCP-Servers.png)
-
-6. Select **Always Allow** so the AI does not ask for permissions repeatedly.
-
-![Always Allow](server/media/Always-Allow.png)
-
-### Setup Remote Server
+### Connect Remote Server
 
 1. Open Claude.
 
@@ -96,6 +38,73 @@
 4. Select **Always Allow** so the AI does not ask for permissions repeatedly.
 
 ![Always Allow](server/media/Allow-Always.png)
+
+### Setup Locally
+
+1. Clone the repository, install dependencies, and build the server.
+
+```bash
+git clone https://github.com/sanket-164/MCP-Servers.git
+cd MCP-Servers/server
+npm install
+npm run build
+```
+
+2. Open Claude Desktop.
+
+![Open Claude Desktop](server/media/Open-Claude-Desktop.png)
+
+3. Go to **Settings**.
+
+![Go to Settings](server/media/Go-to-Settings.png)
+
+4. Go to **Developer Mode** and click **Edit Config**.
+
+![Open Claude Config](server/media/Open-Claude-Config.png)
+
+5. Edit the config by adding static paths to mcp servers file and save it.
+
+```bash
+{
+  ...
+  ,
+  "mcpServers": {
+    "mealdb-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\MCP-Servers\\server\\dist\\mcp\\mealdb\\stdio.js"
+      ]
+    },
+    "leetcode-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\MCP-Servers\\server\\dist\\mcp\\leetcode\\stdio.js"
+      ]
+    },
+    "clashofclans-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\MCP-Servers\\server\\dist\\mcp\\clash-of-clans\\stdio.js"
+      ]
+    },
+    "brawlstars-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\MCP-Servers\\server\\dist\\mcp\\brawlstars\\stdio.js"
+      ]
+    }
+  }
+}
+
+```
+
+6. Reopen Claude Desktop and go to **Developer Mode**.
+
+![View MCP Servers](server/media/View-MCP-Servers.png)
+
+7. Select **Always Allow** so the AI does not ask for permissions repeatedly.
+
+![Always Allow](server/media/Always-Allow.png)
 
 ## Demo prompts (copy-paste)
 
