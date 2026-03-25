@@ -12,7 +12,7 @@
   "license": "ISC",
   "type": "module",
   "bin": {
-    "mealdb-mcp": "./dist/index.js"
+    "server": "./dist/index.js"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.27.1",

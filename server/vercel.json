@@ -1,0 +1,5 @@
+{
+  "version": 2,
+  "name": "MCP_Express_Server",
+  "routes": [{ "src": "/(.*)", "dest": "/dist/index.js" }]
+}

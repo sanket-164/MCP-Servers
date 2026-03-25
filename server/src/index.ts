@@ -3,6 +3,7 @@ import { createMcpExpressApp } from "@modelcontextprotocol/sdk/server/express.js
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { isInitializeRequest } from "@modelcontextprotocol/sdk/types.js";
 import { type McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import type { Request, Response } from "express";
 
 import { createMcpServer as createBrawlStarsServer } from "./mcp/brawlstars/server.js";
 import { createMcpServer as createClashOfClansServer } from "./mcp/clash-of-clans/server.js";
@@ -132,23 +133,29 @@ app.all("/mcp/:mcpId", async (req, res) => {
 });
 
 const PORT = process.env.MCP_PORT ? Number(process.env.MCP_PORT) : 3000;
-app.listen(PORT, () => {
-    console.log(`[mcp-express] MCP Express server listening on port ${PORT}`);
-});
+export default function handler(req: Request, res: Response) {
+    return app(req, res);
+}
 
-process.on("SIGINT", async () => {
-    console.log("[mcp-express] Shutting down...");
-    for (const state of sessions.values()) {
-        try {
-            await state.transport.close();
-        } catch {
-            // ignore
+if (!process.env.VERCEL) {
+    app.listen(PORT, () => {
+        console.log(`[mcp-express] MCP Express server listening on port ${PORT}`);
+    });
+
+    process.on("SIGINT", async () => {
+        console.log("[mcp-express] Shutting down...");
+        for (const state of sessions.values()) {
+            try {
+                await state.transport.close();
+            } catch {
+                // ignore
+            }
+            try {
+                await state.server.close();
+            } catch {
+                // ignore
+            }
         }
-        try {
-            await state.server.close();
-        } catch {
-            // ignore
-        }
-    }
-    process.exit(0);
-});
+        process.exit(0);
+    });
+}
