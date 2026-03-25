@@ -7,7 +7,8 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 dotenv.config({
-    path: path.resolve(__dirname, "../.env"),
+    // Resolve from `server/.env` (helpers live under `server/src/mcp/clash-of-clans`)
+    path: path.resolve(__dirname, "../../../.env"),
 });
 
 const BASE_URL = process.env.COC_API_URL;
