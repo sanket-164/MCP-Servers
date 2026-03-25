@@ -1,17 +1,15 @@
-# MCP Express: sanket-mcps
+# MCP Servers
 
-Deployed Express base URL: https://sanket-mcps.vercel.app/
+This repository provides a collection of **Model Context Protocol (MCP) servers** exposed over HTTP and STDIO.
 
-This project exposes multiple Model Context Protocol (MCP) servers over HTTP.
-
-## Available MCP servers
+## Remote MCP servers
 
 - `brawlstars`: https://sanket-mcps.vercel.app/mcp/brawlstars
 - `clash-of-clans`: https://sanket-mcps.vercel.app/mcp/clash-of-clans
 - `leetcode`: https://sanket-mcps.vercel.app/mcp/leetcode
 - `mealdb`: https://sanket-mcps.vercel.app/mcp/mealdb
 
-## Use cases (what each MCP is good for)
+## Use cases
 
 - `brawlstars`: player and club lookups, rankings by country/global, and matchup-style comparisons.
 - `clash-of-clans`: clan scouting and war readiness summaries, war log lookups, and player/clan comparison helpers.
@@ -24,3 +22,81 @@ This project exposes multiple Model Context Protocol (MCP) servers over HTTP.
 - [Clash of Clans MCP](server/src/mcp/clash-of-clans/README.md)
 - [LeetCode MCP](server/src/mcp/leetcode/README.md)
 - [TheMealDB MCP](server/src/mcp/mealdb/README.md)
+
+## Setup
+
+### Setup Locally
+
+1. Open Claude Desktop.
+
+![Open Claude Desktop](server/media/Open-Claude-Desktop.png)
+
+2. Go to **Settings**.
+
+![Go to Settings](server/media/Go-to-Settings.png)
+
+3. Go to **Developer Mode** and click **Edit Config**.
+
+![Open Claude Config](server/media/Open-Claude-Config.png)
+
+4. Edit the config by adding static paths to mcp servers file and save it.
+
+```bash
+{
+  ...
+  ,
+  "mcpServers": {
+    "mealdb-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\mealdb\\stdio.js"
+      ]
+    },
+    "leetcode-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\leetcode\\stdio.js"
+      ]
+    },
+    "clashofclans-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\clash-of-clans\\stdio.js"
+      ]
+    },
+    "brawlstars-mcp": {
+      "command": "node",
+      "args": [
+        "[Parent-Folder]\\Model-Context-Protocol\\server\\dist\\mcp\\brawlstars\\stdio.js"
+      ]
+    }
+  }
+}
+
+```
+
+5. Reopen Claude Desktop and go to **Developer Mode**.
+
+![View MCP Servers](server/media/View-MCP-Servers.png)
+
+6. Select **Always Allow** so the AI does not ask for permissions repeatedly.
+
+![Always Allow](server/media/Always-Allow.png)
+
+### Setup Remote Server
+
+1. Open Claude.
+
+![Open Claude Desktop](server/media/Open-Claude-Desktop.png)
+
+2. Go to **Custom Connector**.
+
+![Go to Custom Connector](server/media/Go-to-Custom-Connector.png)
+
+3. Add your MCP server URL and your preferred name.
+
+![Add MCP Server](server/media/Add-MCP-Server.png)
+
+4. Select **Always Allow** so the AI does not ask for permissions repeatedly.
+
+![Always Allow](server/media/Allow-Always.png)
