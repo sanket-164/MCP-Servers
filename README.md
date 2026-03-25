@@ -1,11 +1,7 @@
 # MCP Servers
 
-This repository provides a collection of **Model Context Protocol (MCP) servers** exposed over HTTP and STDIO.
-
-## Remote MCP servers
-
-- `brawlstars`: https://sanket-mcps.vercel.app/mcp/brawlstars
 - `clash-of-clans`: https://sanket-mcps.vercel.app/mcp/clash-of-clans
+- `brawlstars`: https://sanket-mcps.vercel.app/mcp/brawlstars
 - `leetcode`: https://sanket-mcps.vercel.app/mcp/leetcode
 - `mealdb`: https://sanket-mcps.vercel.app/mcp/mealdb
 
@@ -100,3 +96,29 @@ This repository provides a collection of **Model Context Protocol (MCP) servers*
 4. Select **Always Allow** so the AI does not ask for permissions repeatedly.
 
 ![Always Allow](server/media/Allow-Always.png)
+
+## Demo prompts (copy-paste)
+
+### Clash of Clans
+
+```text
+Provide a complete summary of a clan tag [clanTag] in clash of clans. Include clan profile, members, war activity, and key insights.
+```
+
+### Brawl Stars
+
+```text
+Provide a full report for brawlstars player tag [playerTag]. Include trophies, top brawlers, recent performance, and improvement suggestions.
+```
+
+### LeetCode
+
+```text
+Compare these two leetcode profiles: [username1] and [username2]. Show solved counts by difficulty, contest performance, language usage, strengths, and a final comparison summary.
+```
+
+### TheMealDB
+
+```text
+Suggest a few categories or cuisines I can cook from. Then recommend one dish with its complete recipe, ingredients list, and step-by-step instructions.
+```
